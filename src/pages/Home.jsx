@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Input from '../components/Input'
+import FileUpload from '../components/FileUpload'
 
 export default function Home() {
+  const [text, setText] = useState('')
+  const [file, setFile] = useState(null);
+
   return (
-    <div className='bg-red-500'>Home</div>
+    <>
+      <Input setText={setText}/>
+      <FileUpload setFile={setFile} file={file}/>
+    </>
   )
 }

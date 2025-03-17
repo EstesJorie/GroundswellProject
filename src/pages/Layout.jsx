@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar'
 
 export default function Layout() {
   return (
-    <div className='bg-red-500'>
+    <div>
         <NavBar />
         <Outlet />
     </div>
