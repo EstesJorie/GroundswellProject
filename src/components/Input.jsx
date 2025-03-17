@@ -27,10 +27,11 @@ return (
              className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7]" ></textarea>
              
              
-             <>
-      <div className="">
-        <input id="file" type="file" onChange={handleFileChange} />
-      </div>
+             
+      <div className="flow-root">
+        <div className='float-left'>
+        <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
+      
       {file && (
         <section>
         </section>
@@ -41,10 +42,12 @@ return (
           
         ></button>
       )}
-    </>
+      </div>
+    
 
 
-            <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2'>Submit</button>
+            <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2 float-right'>Submit</button>
+            </div>
         </form>
  
         </div>
