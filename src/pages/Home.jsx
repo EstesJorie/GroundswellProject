@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Input from '../components/Input'
-import FileUpload from '../components/FileUpload'
+import Heading from '../components/Heading'
 
 export default function Home() {
   const [text, setText] = useState('')
@@ -8,8 +8,10 @@ export default function Home() {
 
   return (
     <>
-      <Input setText={setText}/>
-      <FileUpload setFile={setFile} file={file}/>
+    <div className='bg-blue-200 min-h-screen'>
+      <Heading />
+      <Input setText={setText} setFile={setFile} file={file}/>
+      </div>
     </>
   )
 }
