@@ -20,12 +20,6 @@ const FileUpload = ({setFile, file}) => {
       </div>
       {file && (
         <section>
-          File details:
-          <ul>
-            <li>Name: {file.name}</li>
-            <li>Type: {file.type}</li>
-            <li>Size: {file.size} bytes</li>
-          </ul>
         </section>
       )}
 
@@ -33,7 +27,7 @@ const FileUpload = ({setFile, file}) => {
         <button 
           onClick={handleUpload}
           className="submit"
-        >Upload a file</button>
+        ></button>
       )}
     </>
   );
