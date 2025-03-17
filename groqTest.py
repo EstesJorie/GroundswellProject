@@ -11,7 +11,7 @@ client = groq.Client(api_key=APIKEY)
 print(f"API Key loaded: {'Key exists' if APIKEY else 'Key not found'}")
 print(f"First 10 characters of key: {APIKEY[:10] if APIKEY else 'N/A'}")
 
-def chat_with_groq(prompt, model="llama3-70b-8192"):
+def chat_with_groq(prompt, model="deepseek-r1-distill-qwen-32b"):
     """
     Send a prompt to Groq and get a response.
     
