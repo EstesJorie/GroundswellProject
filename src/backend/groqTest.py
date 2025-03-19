@@ -7,8 +7,8 @@ APIKEY = os.getenv('GROQ_API_KEY')
 client = groq.Client(api_key=APIKEY)
 
 ''' DO NOT LET THIS KEY BE EXPOSED THIS IS JUST TO TEST!!! '''
-print(f"API Key loaded: {'Key exists' if APIKEY else 'Key not found'}")
-print(f"First 10 characters of key: {APIKEY[:10] if APIKEY else 'N/A'}")
+#print(f"API Key loaded: {'Key exists' if APIKEY else 'Key not found'}")
+#print(f"First 10 characters of key: {APIKEY[:10] if APIKEY else 'N/A'}")
 
 def read_file_content(file_path):
     try:
