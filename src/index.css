@@ -1,1 +1,5 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+.gw-orange {
+    @apply bg-[#e85512];
+}
