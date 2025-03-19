@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 /* not sure if key is meant to be done in this way */
 
-export default function OutputArea({text, output}) {
+export default function OutputArea({text, output, setText}) {
   const [messageHistory, setMessageHistory] = useState([
     {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
@@ -13,7 +13,7 @@ export default function OutputArea({text, output}) {
 
 
   useEffect(() => {
-    if (text) {
+    if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
         {key: prevMessages.length, sender: "YOU", content: text}
