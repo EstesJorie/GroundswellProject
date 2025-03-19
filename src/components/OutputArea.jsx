@@ -11,12 +11,10 @@ export default function OutputArea({text}) {
     {key:1, sender:"BOT", content:"Hello World"}
   ] /* Placeholder */
 
-  // useEffect(() => {
-  //   messageHistory[key=messageHistory.length-1, sender='YOU'] = text
-  //   messageHistory.key = messageHistory.length-1
-  //   message
-  //   console.log(messageHistory)
-  // }, [text])
+  useEffect(() => {
+    messageHistory[messageHistory.length-1] 
+    console.log(messageHistory)
+  }, [text])
   return (
     <div id='out' className='grow bg-white flex flex-row'>
       <div className='grid items-center p-5 bg-[#BFC0C0]'>
