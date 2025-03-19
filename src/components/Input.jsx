@@ -3,9 +3,8 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
-export default function Input({ setOutput, output }) {
+export default function Input({ setOutput, output, setText, text }) {
     const textRef = useRef(null)
-    const [text, setText] = useState('')
     const [file, setFile] = useState(false);
     const [model, setModel] = useState(1)
 
@@ -74,7 +73,7 @@ return (
   <div className='grid w-full flex-none'>
     <form action="submit" id="text-form" className='p-4'>
       <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
-       className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25" >
+       className="w-full p-3 mono rounded-xs text-black bg-[#f1f1f1] placeholder-[#6A7881] h-25" >
       </textarea>
         
       <div className="flow-root">

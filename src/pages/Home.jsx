@@ -5,12 +5,13 @@ import Heading from '../components/Heading.jsx'
 
 export default function Home() {
   const [output, setOutput] = useState('')
+  const [text, setText] = useState('')
 
   return (
     <div className='bg-[#3e5060] min-h-full w-full flex flex-col grow'>
-      <Heading />
+      <Heading text={text} />
       <OutputArea />
-      <Input setOutput={setOutput}/>
+      <Input setOutput={setOutput} setText={setText} text={text} />
     </div>
   )
 }
