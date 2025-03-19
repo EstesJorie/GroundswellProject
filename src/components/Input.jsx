@@ -20,46 +20,30 @@ export default function Input({ setOutput, output, setText, text }) {
     }
 
     const handleFormSubmit = async (e) => {
-      e.preventDefault()
-      console.log(`${file.name} and ${localText}`)
+      e.preventDefault();
+      console.log(`${file?.name} and ${localText}`);
   
-      setText(localText)
+      setText(localText);
       
-      if (file) {
+      if (file || text !== '') {
           console.log('Uploading file...');
     
-
-        const handleFormSubmit = async (e) => {
-            e.preventDefault()
-            console.log(`${file.name} and ${localText}`)
-
-            setText(localText)
-            
-            if (file || text!= '') {
-                console.log('Uploading file...');
-          
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('text', text)
-                formData.append('model', model)
-          
-                try {
-                  const result = await fetch('127.0.0.1:8000', {
-                    method: 'POST',
-                    body: formData,
-                  });
-          
-                  const data = await result.json();
-                  await setOutput(data)
-                  
-          
-                  console.log(output);
-                } catch (error) {
-                  console.error(error);
-                }
-              } 
-
-              
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('text', localText); // Changed from text to localText
+          formData.append('model', model);
+    
+          try {
+              // Updated URL with http:// prefix and correct endpoint
+              const result = await fetch('http://127.0.0.1:8000/upload', {
+                  method: 'POST',
+                  body: formData,
+                  headers: {
+                      // Remove Content-Type header to let browser set it with boundary
+                      'Accept': 'application/json',
+                  },
+              });
+  
               if (!result.ok) {
                   throw new Error(`HTTP error! status: ${result.status}`);
               }
@@ -72,7 +56,7 @@ export default function Input({ setOutput, output, setText, text }) {
               alert('Error uploading file. Please try again.');
           }
       } else {
-          alert('Please attach a file')
+          alert('Please attach a file');
       }
   }
 
