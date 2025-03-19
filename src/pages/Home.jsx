@@ -8,11 +8,7 @@ export default function Home() {
   const [text, setText] = useState('')
 
   return (
-<<<<<<< HEAD
-    <div className='bg-[#3e5060] min-h-full w-full flex flex-col grow'>
-=======
-    <div className='bg-[#6D97B0] min-h-full w-full flex flex-col grow'>
->>>>>>> e80df13bd56cf2ea79ee1ce3b69ecd42164b45d0
+    <div className='bg-[#345060] min-h-full w-full flex flex-col grow'>
       <Heading text={text} />
       <OutputArea />
       <Input setOutput={setOutput} setText={setText} text={text} />
