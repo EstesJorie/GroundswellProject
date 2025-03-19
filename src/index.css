@@ -1,1 +1,10 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+.gw-orange {
+    @apply bg-[#e85512];
+}
+
+.button {
+    @apply rounded-md border-2 border-green-300 bg-gradient-to-b from-green-500 to-green-300;
+    @apply hover:underline;
+}

@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-import Input from '../components/Input'
-import Heading from '../components/Heading'
-import OutputBox from '../components/OutputBox'
+import Input from '../components/Input.jsx'
+import OutputArea from '../components/OutputArea.jsx'
+import Heading from '../components/Heading.jsx'
 
 export default function Home() {
   const [output, setOutput] = useState('')
 
   return (
-    <>
-    <div className='bg-white min-h-screen'>
+    <div className='bg-[#6D97B0] min-h-full w-full flex flex-col grow'>
       <Heading />
-      <Input setOutput={setOutput} output={output} />
-      <OutputBox output={output} />
-      </div>
-    </>
+      <OutputArea />
+      <Input setOutput={setOutput}/>
+    </div>
   )
 }
