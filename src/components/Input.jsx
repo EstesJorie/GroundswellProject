@@ -65,7 +65,10 @@ return (
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
       
-          <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2 float-right w-full'>Submit</button>
+          <button onClick={handleFormSubmit} 
+           className='button w-150 p-2 float-right mr-20'>
+            Submit
+          </button>
       </div>
     </form>
   </div>
