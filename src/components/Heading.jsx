@@ -19,7 +19,7 @@ export default function Heading({text}) {
     
     
   return (
-    <div className='flex flex-row flex-none p-1 pt-2 bg-[#345060]'>
+    <div className='flex flex-row flex-none p-1 pt-2 bg-[#3e5060]'>
         <img className='h-20 p-1' src="../images/Glasses_White.png" alt="Groundswell logo" />
         <img className='h-20 ml-3 content-between' src='../images/Groundswell Logo_White.png' />
     </div>
