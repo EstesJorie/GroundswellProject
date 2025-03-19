@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className='bg-[#3e5060] min-h-full w-full flex flex-col grow'>
       <Heading text={text} />
-      <OutputArea content={output} text={text} />
+      <OutputArea content={output} setText={setText} text={text} />
       <Input setOutput={setOutput} setText={setText} text={text} />
     </div>
   )
