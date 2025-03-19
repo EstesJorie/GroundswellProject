@@ -1,12 +1,46 @@
 import React, {useState} from 'react'
+import { useRef } from 'react';
 
 
 
-export default function Input({ setText, setFile, file }) {
-        function handleFormSubmit(event) {
-            setText(event.target.value);
-            event.preventDefault()
-            console.log('submitted')
+export default function Input({ setOutput }) {
+    const textRef = useRef(null)
+    const [text, setText] = useState('')
+    const [file, setFile] = useState(null);
+
+
+        const handleFormSubmit = async (e) => {
+            // setText(textRef.current.value);
+            e.preventDefault()
+            console.log(`${file.name} and ${text}`)
+            
+            if (file) {
+                console.log('Uploading file...');
+          
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('text', text)
+          
+                try {
+                  // You can write the URL of your server or any other endpoint used for file upload
+                  const result = await fetch('https://httpbin.org/post', {
+                    method: 'POST',
+                    body: formData,
+                  });
+          
+                  const data = await result.json();
+                  await setOutput(data)
+          
+                  console.log(data);
+                } catch (error) {
+                  console.error(error);
+                }
+              }
+        }
+
+        const handleTextChange = (e) => {
+            setText(e.target.value)
+            console.log(e.target.value)
         }
 
         const handleFileChange = async (e) => {
@@ -22,29 +56,19 @@ export default function Input({ setText, setFile, file }) {
 return (
         <>
         <div className='grid'>
-        <form action="" id="text-form" className='p-4'>
-            <textarea rows="10" name="text" placeholder='Start typing...'
-             className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7]" ></textarea>
+        <form action="submit" id="text-form" className='p-4'>
+            <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
+             className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7] mb-2" ></textarea>
              
              
-             <>
-      <div className="">
-        <input id="file" type="file" onChange={handleFileChange} />
-      </div>
-      {file && (
-        <section>
-        </section>
-      )}
-
-      {file && (
-        <button 
-          
-        ></button>
-      )}
-    </>
-
-
-            <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2'>Submit</button>
+             
+        <div className="flow-root">
+            <div className='float-left'>
+                <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
+            </div>
+        
+            <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2 float-right'>Submit</button>
+        </div>
         </form>
  
         </div>
