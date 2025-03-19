@@ -54,7 +54,7 @@ export default function Input({ setOutput }) {
         //   };
 
 return (
-  <div className='grid'>
+  <div className='grid w-full flex-none'>
     <form action="submit" id="text-form" className='p-4'>
       <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
        className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7] h-25" >
