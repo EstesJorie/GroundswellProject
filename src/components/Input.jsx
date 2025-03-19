@@ -19,40 +19,43 @@ export default function Input({ setOutput, output, setText, text }) {
         'Gemini' : 3,
     }
 
-        const handleFormSubmit = async (e) => {
-            e.preventDefault()
-            console.log(`${file.name} and ${localText}`)
-
-            setText(localText)
-            
-            if (file) {
-                console.log('Uploading file...');
-          
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('text', text)
-                formData.append('model', model)
-          
-                try {
-                  const result = await fetch('127.0.0.1:8000', {
-                    method: 'POST',
-                    body: formData,
-                  });
-          
-                  const data = await result.json();
-                  await setOutput(data)
-                  
-          
-                  console.log(output);
-                } catch (error) {
-                  console.error(error);
-                }
-              } else {
-                alert('Attach a file')
-              }
-
+    const handleFormSubmit = async (e) => {
+      e.preventDefault()
+      console.log(`${file.name} and ${localText}`)
+  
+      setText(localText)
+      
+      if (file) {
+          console.log('Uploading file...');
+    
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('text', localText);
+          formData.append('model', model);
+          formData.append('description', '');
+  
+          try {
+              // Update the URL to match the FastAPI endpoint
+              const result = await fetch('http://127.0.0.1:8000/upload', {
+                  method: 'POST',
+                  body: formData,
+              });
               
-        }
+              if (!result.ok) {
+                  throw new Error(`HTTP error! status: ${result.status}`);
+              }
+              
+              const data = await result.json();
+              setOutput(data);
+              console.log('Response:', data);
+          } catch (error) {
+              console.error('Error uploading file:', error);
+              alert('Error uploading file. Please try again.');
+          }
+      } else {
+          alert('Please attach a file')
+      }
+  }
 
         const handleTextChange = async (e) => {
             setLocalText(e.target.value);
@@ -74,9 +77,15 @@ export default function Input({ setOutput, output, setText, text }) {
 return (
   <div className='grid w-full flex-none'>
     <form action="submit" id="text-form" className='p-4' onSubmit={handleFormSubmit}>
-      <textarea rows="10" name="text" placeholder='Start typing...' onSubmit={handleTextChange}
-       className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25" >
-      </textarea>
+    <textarea 
+      rows="10" 
+      name="text" 
+      placeholder='Start typing...' 
+      onChange={handleTextChange}
+      value={localText}
+      className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25"
+    >
+    </textarea>
         
       <div className="flow-root">
           <div className='float-left'>
