@@ -36,7 +36,7 @@ export default function Input({ setOutput, output, setText, text }) {
                 formData.append('model', model)
           
                 try {
-                  const result = await fetch('https://httpbin.org/post', {
+                  const result = await fetch('127.0.0.1:8000', {
                     method: 'POST',
                     body: formData,
                   });
