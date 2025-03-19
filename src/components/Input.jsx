@@ -56,7 +56,7 @@ export default function Input({ setOutput, output, setText, text }) {
               alert('Error uploading file. Please try again.');
           }
       } else {
-          alert('Please attach a file');
+          console.log('Please attach a file');
       }
   }
 
