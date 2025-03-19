@@ -54,23 +54,19 @@ export default function Input({ setOutput }) {
         //   };
 
 return (
-        <>
-        <div className='grid'>
-        <form action="submit" id="text-form" className='p-4'>
-            <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
-             className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7] mb-2" ></textarea>
-             
-             
-             
-        <div className="flow-root">
-            <div className='float-left'>
-                <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
-            </div>
+  <div className='grid'>
+    <form action="submit" id="text-form" className='p-4'>
+      <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
+       className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7] h-25" >
+      </textarea>
         
-            <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2 float-right'>Submit</button>
-        </div>
-        </form>
- 
-        </div>
-        </>
+      <div className="flow-root">
+          <div className='float-left'>
+              <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
+          </div>
+      
+          <button onClick={handleFormSubmit} className='rounded bg-green-500 p-2 float-right w-full'>Submit</button>
+      </div>
+    </form>
+  </div>
 )}
