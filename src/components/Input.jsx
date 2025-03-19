@@ -1,16 +1,26 @@
 import React, {useState} from 'react'
 import { useRef } from 'react';
-
+import { useEffect } from 'react';
 
 
 export default function Input({ setOutput, output }) {
     const textRef = useRef(null)
     const [text, setText] = useState('')
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(false);
+    const [model, setModel] = useState(1)
+
+    useEffect(() => {
+        console.log("Updated model value:", model);
+    }, [model])
+
+    const models = {
+        'ChatGPT' : 1,
+        'DeepSeek' : 2,
+        'Gemini' : 3,
+    }
 
 
         const handleFormSubmit = async (e) => {
-            // setText(textRef.current.value);
             e.preventDefault()
             console.log(`${file.name} and ${text}`)
             
@@ -20,9 +30,9 @@ export default function Input({ setOutput, output }) {
                 const formData = new FormData();
                 formData.append('file', file);
                 formData.append('text', text)
+                formData.append('model', model)
           
                 try {
-                  // You can write the URL of your server or any other endpoint used for file upload
                   const result = await fetch('https://httpbin.org/post', {
                     method: 'POST',
                     body: formData,
@@ -54,9 +64,11 @@ export default function Input({ setOutput, output }) {
             }
           };
         
-        //   const handleUpload = async () => {
+        const handleModelChange = async (e) => {
+            console.log(e.target.value)
+            setModel(models[e.target.value])
             
-        //   };
+        }
 
 return (
   <div className='grid w-full flex-none'>
@@ -69,6 +81,12 @@ return (
           <div className='float-left'>
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
+
+          <select onChange={handleModelChange}>
+            <option value='ChatGPT'>ChatGPT</option>
+            <option value='DeepSeek'>DeepSeek</option>
+            <option value='Gemini'>Gemini</option>
+          </select>
       
           <button onClick={handleFormSubmit} 
            className='button w-150 p-2 float-right mr-20'>
