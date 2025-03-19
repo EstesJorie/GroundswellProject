@@ -3,7 +3,7 @@ import { useRef } from 'react';
 
 
 
-export default function Input({ setOutput }) {
+export default function Input({ setOutput, output }) {
     const textRef = useRef(null)
     const [text, setText] = useState('')
     const [file, setFile] = useState(null);
@@ -30,12 +30,17 @@ export default function Input({ setOutput }) {
           
                   const data = await result.json();
                   await setOutput(data)
+                  
           
-                  console.log(data);
+                  console.log(output);
                 } catch (error) {
                   console.error(error);
                 }
+              } else {
+                alert('Attach a file')
               }
+
+              
         }
 
         const handleTextChange = (e) => {
