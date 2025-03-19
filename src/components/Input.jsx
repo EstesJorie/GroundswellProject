@@ -3,7 +3,7 @@ import { useRef } from 'react';
 
 
 
-export default function Input({ setOutput }) {
+export default function Input({ setOutput, output }) {
     const textRef = useRef(null)
     const [text, setText] = useState('')
     const [file, setFile] = useState(null);
@@ -30,12 +30,17 @@ export default function Input({ setOutput }) {
           
                   const data = await result.json();
                   await setOutput(data)
+                  
           
-                  console.log(data);
+                  console.log(output);
                 } catch (error) {
                   console.error(error);
                 }
+              } else {
+                alert('Attach a file')
               }
+
+              
         }
 
         const handleTextChange = (e) => {
@@ -58,7 +63,7 @@ return (
         <div className='grid'>
         <form action="submit" id="text-form" className='p-4'>
             <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
-             className="w-full p-3 mono rounded-xs text-white bg-[#284b63] placeholder-[#528DB7] mb-2" ></textarea>
+             className="w-full p-3 mono rounded-lg text-white bg-[#284b63] placeholder-[#528DB7]shadow-lg shadow-gray-500  mb-2" ></textarea>
              
              
              
