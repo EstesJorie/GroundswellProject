@@ -7,7 +7,7 @@ export default function Home() {
   const [output, setOutput] = useState('')
 
   return (
-    <div className='bg-[#6D97B0] min-h-full w-full flex flex-col grow'>
+    <div className='bg-[#3e5060] min-h-full w-full flex flex-col grow'>
       <Heading />
       <OutputArea />
       <Input setOutput={setOutput}/>
