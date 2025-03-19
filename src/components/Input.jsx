@@ -28,18 +28,37 @@ export default function Input({ setOutput, output, setText, text }) {
       if (file) {
           console.log('Uploading file...');
     
-          const formData = new FormData();
-          formData.append('file', file);
-          formData.append('text', localText);
-          formData.append('model', model);
-          formData.append('description', '');
-  
-          try {
-              // Update the URL to match the FastAPI endpoint
-              const result = await fetch('http://127.0.0.1:8000/upload', {
-                  method: 'POST',
-                  body: formData,
-              });
+
+        const handleFormSubmit = async (e) => {
+            e.preventDefault()
+            console.log(`${file.name} and ${localText}`)
+
+            setText(localText)
+            
+            if (file || text!= '') {
+                console.log('Uploading file...');
+          
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('text', text)
+                formData.append('model', model)
+          
+                try {
+                  const result = await fetch('127.0.0.1:8000', {
+                    method: 'POST',
+                    body: formData,
+                  });
+          
+                  const data = await result.json();
+                  await setOutput(data)
+                  
+          
+                  console.log(output);
+                } catch (error) {
+                  console.error(error);
+                }
+              } 
+
               
               if (!result.ok) {
                   throw new Error(`HTTP error! status: ${result.status}`);
