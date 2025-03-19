@@ -95,7 +95,7 @@ return (
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
 
-          <select onChange={handleModelChange}>
+          <select onChange={handleModelChange} className='border border-black rounded bg-white'>
             <option value='ChatGPT'>ChatGPT</option>
             <option value='DeepSeek'>DeepSeek</option>
             <option value='Gemini'>Gemini</option>
