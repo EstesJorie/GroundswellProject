@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar'
 
 export default function Layout() {
   return (
-    <div>
+    <div className='h-full w-screen grow flex flex-col'>
         {/* <NavBar /> */}
         <Outlet />
     </div>
