@@ -19,8 +19,6 @@ export default function Input({ setOutput, output, setText, text }) {
         'Gemini' : 3,
     }
 
-    
-
         const handleFormSubmit = async (e) => {
             e.preventDefault()
             console.log(`${file.name} and ${localText}`)
