@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Heading() {
   return (
-    <div className='flex flex-row bg-blue-300'>
+    <div className='flex flex-row bg-blue-300  border border-b-* border-black border-width-2'>
         <img className='h-15' src="../groundswell.png" alt="Groundswell logo" />
         <span className='font-bold text-4xl p-2 font-serif'>Groundswell Innovation</span>
     </div>
