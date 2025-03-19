@@ -19,16 +19,17 @@ export default function Input({ setOutput }) {
           
                 const formData = new FormData();
                 formData.append('file', file);
+                formData.append('text', text)
           
                 try {
                   // You can write the URL of your server or any other endpoint used for file upload
                   const result = await fetch('https://httpbin.org/post', {
                     method: 'POST',
-                    body: {file, text},
+                    body: formData,
                   });
           
                   const data = await result.json();
-                  data.then(setOutput(data))
+                  await setOutput(data)
           
                   console.log(data);
                 } catch (error) {
