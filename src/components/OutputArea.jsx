@@ -1,13 +1,22 @@
 import React from 'react'
 import ChatMessage from './ChatMessage'
+import { useEffect } from 'react'
 
-const messageHistory = [
-  {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"},
-  {key:1, sender:"BOT", content:"Hello World"}
-] /* Placeholder */
+
 /* not sure if key is meant to be done in this way */
 
-export default function OutputArea() {
+export default function OutputArea({text}) {
+  const messageHistory = [
+    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"},
+    {key:1, sender:"BOT", content:"Hello World"}
+  ] /* Placeholder */
+
+  // useEffect(() => {
+  //   messageHistory[key=messageHistory.length-1, sender='YOU'] = text
+  //   messageHistory.key = messageHistory.length-1
+  //   message
+  //   console.log(messageHistory)
+  // }, [text])
   return (
     <div id='out' className='grow bg-white flex flex-row'>
       <div className='grid items-center p-5 bg-[#BFC0C0]'>
