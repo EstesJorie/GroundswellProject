@@ -27,7 +27,7 @@ export default function Input({ setOutput, output, setText, text }) {
 
             setText(localText)
             
-            if (file) {
+            if (file || text!= '') {
                 console.log('Uploading file...');
           
                 const formData = new FormData();
@@ -49,9 +49,7 @@ export default function Input({ setOutput, output, setText, text }) {
                 } catch (error) {
                   console.error(error);
                 }
-              } else {
-                alert('Attach a file')
-              }
+              } 
 
               
         }
