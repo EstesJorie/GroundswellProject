@@ -7,6 +7,7 @@ export default function Input({ setOutput, output, setText, text }) {
     const textRef = useRef(null)
     const [file, setFile] = useState(false);
     const [model, setModel] = useState(1)
+    const [localText, setLocalText] = useState(text || "")
 
     useEffect(() => {
         console.log("Updated model value:", model);
@@ -18,10 +19,13 @@ export default function Input({ setOutput, output, setText, text }) {
         'Gemini' : 3,
     }
 
+    
 
         const handleFormSubmit = async (e) => {
             e.preventDefault()
-            console.log(`${file.name} and ${text}`)
+            console.log(`${file.name} and ${localText}`)
+
+            setText(localText)
             
             if (file) {
                 console.log('Uploading file...');
@@ -52,16 +56,16 @@ export default function Input({ setOutput, output, setText, text }) {
               
         }
 
-        const handleTextChange = (e) => {
-            setText(e.target.value)
-            console.log(e.target.value)
-        }
+        const handleTextChange = async (e) => {
+            setLocalText(e.target.value);
+            console.log(localText)
+        };
 
         const handleFileChange = async (e) => {
-            if (e.target.files) {
-              setFile(e.target.files[0]);
+            if (e.target.files && e.target.files.length > 0) {
+                setFile(e.target.files[0]);
             }
-          };
+        };
         
         const handleModelChange = async (e) => {
             console.log(e.target.value)
@@ -71,9 +75,9 @@ export default function Input({ setOutput, output, setText, text }) {
 
 return (
   <div className='grid w-full flex-none'>
-    <form action="submit" id="text-form" className='p-4'>
-      <textarea rows="10" name="text" placeholder='Start typing...' onChange={handleTextChange}
-       className="w-full p-3 mono rounded-xs text-black bg-[#f1f1f1] placeholder-[#6A7881] h-25" >
+    <form action="submit" id="text-form" className='p-4' onSubmit={handleFormSubmit}>
+      <textarea rows="10" name="text" placeholder='Start typing...' onSubmit={handleTextChange}
+       className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25" >
       </textarea>
         
       <div className="flow-root">
@@ -87,7 +91,7 @@ return (
             <option value='Gemini'>Gemini</option>
           </select>
       
-          <button onClick={handleFormSubmit} 
+          <button type='submit' 
            className='button w-150 p-2 float-right mr-20'>
             Submit
           </button>
