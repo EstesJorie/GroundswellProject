@@ -2,9 +2,10 @@ import React from 'react'
 import ChatMessage from './ChatMessage'
 
 const messageHistory = [
-  {sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"},
-  {sender:"BOT", content:"Hello World"}
+  {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"},
+  {key:1, sender:"BOT", content:"Hello World"}
 ] /* Placeholder */
+/* not sure if key is meant to be done in this way */
 
 export default function OutputArea() {
   return (
