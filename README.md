@@ -1,26 +1,30 @@
 # Useful Links
 https://console.groq.com/docs/models - List of Groq models which are avaliable
 
+uvicorn src.backend.main:app --reload --port 8000
 
 # Python Dependencies 
 - OS
 - Groq
 - Python-Dotenv
-- Flask 
-- Flask Cors
+- FastAPI
+- Uvicorn
+- Python-Multipart
 
 # Dependency Install
 
 ## Conda
 - conda install conda-forge::groq
 - conda install conda-forge::python-dotenv
-- conda install anaconda::flask
-- conda install anaconda::flask-cors
+- conda install conda-forge::fastapi
+- conda install conda-forge::uvicorn  
+- conda install conda-forge::python-multipart   
 
 
 ## PIP 
 - pip install groq
 - pip install python-dotenv
-- pip install flask 
-- pip install flask-cors
+- pip install fastapi
+- pip install uvicorn
+- pip install python-multipart
 
