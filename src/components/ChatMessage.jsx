@@ -36,6 +36,7 @@ export default function ChatMessage({sender, content, file_label=null}) {
                     <div className='bg-[#ff7c40] max-w-180 float-left p-2 rounded-lg text-wrap' >
                         <p className='font-semibold'>{sender}</p>
                         {parseMarkdown(content)}
+                        {FileIcon(file_label)}
                     </div>
                 </div>
             );
@@ -56,6 +57,7 @@ export default function ChatMessage({sender, content, file_label=null}) {
                     <div className='bg-white border-1 border-black max-w-180 float-left p-2 rounded-lg text-wrap'>
                         <p className='font-semibold'>{sender}</p>
                         {parseMarkdown(content)}
+                        {FileIcon(file_label)}
                     </div>
                 </div>
             );

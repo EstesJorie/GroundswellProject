@@ -49,7 +49,7 @@ const ImageCyclingLoader = ({
 
 export default function OutputArea({text, output, setText}) {
   const [messageHistory, setMessageHistory] = useState([
-    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"}
+    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**", file_label:'File icon demo'}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
   console.log(typeof messageHistory)
 
