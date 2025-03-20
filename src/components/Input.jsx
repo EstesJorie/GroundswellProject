@@ -49,7 +49,7 @@ export default function Input({ setOutput, output, setText, text }) {
               }
               
               const data = await result.json();
-              setOutput(data);
+              setOutput(data.analysis);
               console.log('Response:', data);
           } catch (error) {
               console.error('Error uploading file:', error);
