@@ -14,9 +14,21 @@ export default function Input({ setOutput, output, setText, text }) {
     }, [model])
 
     const models = {
-        'ChatGPT' : 1,
-        'DeepSeek' : 2,
-        'Gemini' : 3,
+        'Gemma 2' : 1,
+        'Deepseek R1' : 2,
+        'Llama 3.1' : 3,
+        'Mixtral' : 4
+
+        // 1: "gemma2-9b-it",
+        // 2: "deepseek-r1-distill-qwen-32b",
+        // 3: "llama-3.1-8b-instant",
+        // 4: "mixtral-8x7b-32768",
+        // 5: "llama3-70b-8192",
+        // 6: "llama3-8b-8192",
+        // 7: "llama-guard-3-8b",
+        // 8: "llama-3.3-70b-versatile",
+        // 9: "deepseek-r1-distill-llama-70b-specdec",
+        // 10: "deepseek-r1-distill-llama-70b",
     }
 
     const handleFormSubmit = async (e) => {
@@ -106,9 +118,10 @@ return (
           </div>
 
           <select onChange={handleModelChange} className='border border-black rounded bg-white'>
-            <option value='ChatGPT'>ChatGPT</option>
-            <option value='DeepSeek'>DeepSeek</option>
-            <option value='Gemini'>Gemini</option>
+            <option value='Gemma 2'>Gemma 2</option>
+            <option value='Deepseek R1'>Deepseek R1</option>
+            <option value='Llama 3.1'>Llama 3.1</option>
+            <option value='Mixtral'>Mixtral</option>
           </select>
       
           <button type='submit' 
