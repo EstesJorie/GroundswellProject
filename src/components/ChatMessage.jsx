@@ -1,6 +1,16 @@
 import React from 'react'
 import Markdown from 'react-markdown'
 
+function replaceNewlines(str) {
+    // Replace literal \r and \n with actual carriage return and newline characters
+    str = str.replace(/\\r/g, "\r").replace(/\\n/g, "\n");
+
+    // Add a newline before non-escaped octothorpes (#)
+    str = str.replace(/(^|[^\\])#/g, '$1\n#');
+
+    return str;
+}
+
 export function parseMarkdown(markdown) {
     // Split text by double newlines (standard paragraph breaks)
     const paragraphs = markdown.split(/\n+/);
@@ -13,7 +23,7 @@ export function parseMarkdown(markdown) {
         if (trimmedParagraph) {
             return (
                 <p key={index} className="mb-4">
-                    <Markdown>{trimmedParagraph}</Markdown>
+                    <Markdown>{replaceNewlines(trimmedParagraph)}</Markdown>
                 </p>
             );
         }
