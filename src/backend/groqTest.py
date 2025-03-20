@@ -19,13 +19,13 @@ def read_file_content(file_path):
     
 models = {
     1: "gemma2-9b-it",
-    2: "deepseek-r1-distill-qwen-32b",
+    2: "llama-3.3-70b-versatile",
     3: "llama-3.1-8b-instant",
-    4: "mixtral-8x7b-32768",
+    4: "llama-guard-3-8b",
     5: "llama3-70b-8192",
     6: "llama3-8b-8192",
-    7: "llama-guard-3-8b",
-    8: "llama-3.3-70b-versatile",
+    7: "mixtral-8x7b-32768",
+    8: "deepseek-r1-distill-qwen-32b",
     9: "deepseek-r1-distill-llama-70b-specdec",
     10: "deepseek-r1-distill-llama-70b",
 }
