@@ -12,7 +12,7 @@ export default function ChatMessage({sender, content}) {
         case "BOT":
             return (
                 <div className='w-full flex-none p-1'>
-                    <div className='bg-[#e85512] max-w-180 float-left p-2 rounded-lg'>
+                    <div className='bg-[#ff7c40] max-w-180 float-left p-2 rounded-lg'>
                         <p className='font-semibold'>{sender}</p>
                         {parseMarkdown(content)}
                     </div>

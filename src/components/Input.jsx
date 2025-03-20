@@ -7,7 +7,7 @@ export default function Input({ setOutput, output, setText, text }) {
     const textRef = useRef(null)
     const [file, setFile] = useState(false);
     const [model, setModel] = useState(1)
-    const [localText, setLocalText] = useState(text || "")
+    const [localText, setLocalText] = useState("")
 
     useEffect(() => {
         console.log("Updated model value:", model);
@@ -24,6 +24,7 @@ export default function Input({ setOutput, output, setText, text }) {
       console.log(`${file?.name} and ${localText}`);
   
       setText(localText);
+      setLocalText('')
       
       if (file || text !== '') {
           console.log('Uploading file...');
@@ -49,14 +50,15 @@ export default function Input({ setOutput, output, setText, text }) {
               }
               
               const data = await result.json();
-              setOutput(data.analysis);
+              setOutput(data);
+              
               console.log('Response:', data);
           } catch (error) {
               console.error('Error uploading file:', error);
               alert('Error uploading file. Please try again.');
           }
       } else {
-          alert('Please attach a file');
+          console.log('Please attach a file');
       }
   }
 
@@ -86,7 +88,10 @@ return (
       placeholder='Start typing...' 
       onChange={handleTextChange}
       value={localText}
-      className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25"
+      className="w-full p-3 mono rounded-xs text-black bg-[#E4ECF1] placeholder-[#6A7881] h-25" onKeyDown={(e) => {
+        if (e.key === "Enter")
+            handleFormSubmit(e);
+        }}
     >
     </textarea>
         
@@ -95,14 +100,14 @@ return (
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
 
-          <select onChange={handleModelChange}>
+          <select onChange={handleModelChange} className='border border-black rounded bg-white'>
             <option value='ChatGPT'>ChatGPT</option>
             <option value='DeepSeek'>DeepSeek</option>
             <option value='Gemini'>Gemini</option>
           </select>
       
           <button type='submit' 
-           className='button w-150 p-2 float-right mr-20'>
+           className='button w-150 p-2 float-right mr-20' >
             Submit
           </button>
       </div>
