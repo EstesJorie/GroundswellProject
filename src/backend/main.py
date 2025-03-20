@@ -44,7 +44,7 @@ async def upload_file(
         if type(file.content_type) == 'application/pdf':
             reader = pdfr(file)
             content_str = reader.extract_text()
-        else: content_str = contents.decode('utf-16')
+        else: content_str = contents.decode('utf-8')
         
         # Combine text and description for the prompt
         prompt = f"{text}. Description: {description if description else text}" 
