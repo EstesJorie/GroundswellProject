@@ -6,12 +6,14 @@ import Heading from '../components/Heading.jsx'
 export default function Home() {
   const [output, setOutput] = useState('')
   const [text, setText] = useState('')
+  const [file, setFile] = useState(null);
 
   return (
-    <div className='bg-[#3e5060] min-h-full w-full flex flex-col grow'>
+    <div className='bg-[#3e5060] max-h-full w-full flex flex-col grow'>
       <Heading text={text} />
-      <OutputArea content={output} text={text} />
-      <Input setOutput={setOutput} setText={setText} text={text} />
+      <OutputArea output={output} text={text} setText={setText} file={file} />
+      <Input setOutput={setOutput} setText={setText} text={text} setFile={setFile} file={file} />
     </div>
   )
 }
+
