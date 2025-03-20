@@ -3,14 +3,22 @@ import Markdown from 'react-markdown'
 
 export function parseMarkdown(markdown) {
     // Split text by double newlines (standard paragraph breaks)
-    const paragraphs = markdown.split(/\n\n+/);
+    const paragraphs = markdown.split(/\n+/);
     
     // Create an array of paragraph elements
-    const paragraphElements = paragraphs.map((paragraph, index) => (
-        <div key={index} className="mb-4">
-            <Markdown>{paragraph}</Markdown>
-        </div>
-    ));
+    const paragraphElements = paragraphs.map((paragraph, index) => {
+        // Trim to remove any leading/trailing whitespace
+        const trimmedParagraph = paragraph.trim();
+        
+        if (trimmedParagraph) {
+            return (
+                <p key={index} className="mb-4">
+                    <Markdown>{trimmedParagraph}</Markdown>
+                </p>
+            );
+        }
+        return null;
+    }).filter(Boolean); // Remove any null elements
     
     return <>{paragraphElements}</>;
 }
