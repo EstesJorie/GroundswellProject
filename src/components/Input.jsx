@@ -40,7 +40,7 @@ export default function Input({ setOutput, output, setText, text, setFile }) {
     
           const formData = new FormData();
           formData.append('file', file);
-          formData.append('text', localText); // Changed from text to localText
+          formData.append('text', text); // Changed from text to localText
           formData.append('model', model);
     
           try {
