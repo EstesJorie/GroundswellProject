@@ -89,8 +89,19 @@ export default function OutputArea({text, output, setText}) {
       </div>
       <div className='flex flex-col grow p-4 '>
         {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} />)}
+        
+        {/* Loading indicator that appears at the bottom */}
+        {isLoading && (
+          <div className="py-3 flex justify-center items-center">
+            <ImageCyclingLoader 
+              images={loadingImages}
+              interval={400}
+              size={80}
+            />
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
 //overflow-y-scroll
