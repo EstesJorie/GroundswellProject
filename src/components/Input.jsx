@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 
 export default function Input({ setOutput, output, setText, text, setFile }) {
-    const textRef = useRef(null)
     const [model, setModel] = useState(1)
     const [localText, setLocalText] = useState("")
 
@@ -33,15 +32,17 @@ export default function Input({ setOutput, output, setText, text, setFile }) {
       console.log(`${file?.name} and ${localText}`);
   
       setText(localText);
-      setLocalText('')
+      
       
       if (file || text !== '') {
           console.log('Uploading file...');
     
           const formData = new FormData();
           formData.append('file', file);
-          formData.append('text', text); // Changed from text to localText
+          formData.append('text', localText); // Changed from text to localText
           formData.append('model', model);
+
+          console.log('File is:', typeof formData['file'])
     
           try {
               // Updated URL with http:// prefix and correct endpoint
@@ -74,6 +75,7 @@ export default function Input({ setOutput, output, setText, text, setFile }) {
       } else {
           console.log('Please attach a file');
       }
+      setLocalText('')
   }
 
         const handleTextChange = async (e) => {
