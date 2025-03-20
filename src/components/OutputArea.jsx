@@ -47,7 +47,7 @@ const ImageCyclingLoader = ({
   );
 };
 
-export default function OutputArea({text, output, setText}) {
+export default function OutputArea({text, output, setText, file}) {
   const [messageHistory, setMessageHistory] = useState([
     {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
@@ -64,10 +64,16 @@ export default function OutputArea({text, output, setText}) {
   ];
 
   useEffect(() => {
+    if(file!=null) {
+      var file_label = file.name
+    }
+    else {
+      var file_label = null
+    };
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "YOU", content: text}
+        {key: prevMessages.length, sender: "YOU", content: text, file_label:file_label}
       ]);
       setIsLoading(true);
     }

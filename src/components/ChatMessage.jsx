@@ -36,7 +36,7 @@ export function FileIcon(file_label) {
     }
 }
 
-export default function ChatMessage({sender, content, file_label=null}) {
+export default function ChatMessage({sender, content, file_label}) {
     switch(sender) {
         case "BOT":
             return (
