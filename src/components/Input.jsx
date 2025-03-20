@@ -31,7 +31,7 @@ export default function Input({ setOutput, output, setText, text }) {
     
           const formData = new FormData();
           formData.append('file', file);
-          formData.append('text', localText); // Changed from text to localText
+          formData.append('text', text); // Changed from text to localText
           formData.append('model', model);
     
           try {
@@ -50,9 +50,14 @@ export default function Input({ setOutput, output, setText, text }) {
               }
               
               const data = await result.json();
-              setOutput(data);
+
+              await setOutput(prev => {
+                console.log("Previous output:", prev);
+                return JSON.stringify(data.analysis);
+              })
               
-              console.log('Response:', data);
+              console.log('Response:', data, output);
+              console.log(typeof output)
           } catch (error) {
               console.error('Error uploading file:', error);
               alert('Error uploading file. Please try again.');
