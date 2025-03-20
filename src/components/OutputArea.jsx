@@ -22,7 +22,7 @@ export default function OutputArea({text, output, setText}) {
   }, [text])
   
   useEffect(() => {
-    if (output) {
+    if (output !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
         {key: prevMessages.length, sender: "BOT", content: output}
