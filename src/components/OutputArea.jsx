@@ -66,7 +66,7 @@ export default function OutputArea({text, output, setText}) {
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "YOU", content: text}
+        {key: prevMessages.length, sender: "YOU", content: text, file_label:null}
       ]);
       setIsLoading(true);
     }
@@ -77,7 +77,7 @@ export default function OutputArea({text, output, setText}) {
       setIsLoading(false);
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "BOT", content: output}
+        {key: prevMessages.length, sender: "BOT", content: output, file_label:null}
       ]);
     }
   }, [output]);
@@ -85,7 +85,7 @@ export default function OutputArea({text, output, setText}) {
   return (
     <div id='out' className='h-0 grow bg-white flex flex-row overflow-auto'>
       <div className='flex flex-col grow p-4 '>
-        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} />)}
+        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} file_label={msg.file_label} />)}
         
         {}
         {isLoading && (
