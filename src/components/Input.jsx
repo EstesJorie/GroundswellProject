@@ -41,7 +41,7 @@ export default function Input({ setOutput, output, setText, text }) {
     
           const formData = new FormData();
           formData.append('file', file);
-          formData.append('text', text); // Changed from text to localText
+          formData.append('text', localText); // Changed from text to localText
           formData.append('model', model);
     
           try {
@@ -129,7 +129,7 @@ return (
         </select>
       
           <button type='submit' 
-           className='button w-60 p-2 float-right mr-10 bg-green-500 text-2xl font-semibold' >
+           className='button w-40 p-2 float-right mr-5 text-2xl font-semibold' >
             Submit
           </button>
       </div>
