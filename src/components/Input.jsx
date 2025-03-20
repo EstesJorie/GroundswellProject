@@ -24,6 +24,11 @@ export default function Input({ setOutput, output, setText, text }) {
         'DeepSeek-Llama': 8,
     }
 
+    useEffect(() => {
+        // Set default model to Gemma (1)
+        setModel(models['DeepSeek-Qwen']);
+    }, []);
+
     const handleFormSubmit = async (e) => {
       e.preventDefault();
       console.log(`${file?.name} and ${localText}`);
@@ -109,7 +114,11 @@ return (
           <div className='float-left'>
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
-          <select onChange={handleModelChange} className='border border-black rounded bg-white font-semibold'>
+          <select 
+            onChange={handleModelChange} 
+            className='border border-black rounded bg-white font-semibold'
+            value={Object.keys(models).find(key => models[key] === model)} // Add this line
+        >
             <option value='Gemma'>Gemini</option>
             <option value='Llama-Guard'>Llama-Guard</option>
             <option value='Llama3-70b'>Llama3-70b</option>
@@ -117,7 +126,7 @@ return (
             <option value='Deepseek-Qwen'>Deepseek-Qwen</option>
             <option value='Deepseek-Llama-Spec'>Deepseek-Llama-Spec</option>
             <option value='Deepseek-Llama'>Deepseek-Llama</option>
-          </select>
+        </select>
       
           <button type='submit' 
            className='button w-150 p-2 float-right mr-20' >
