@@ -64,15 +64,12 @@ export default function OutputArea({text, output, setText}) {
   ];
 
   useEffect(() => {
-<<<<<<< HEAD
-=======
     if(file!=null) {
       var file_label = file.name;
     }
     else {
       var file_label = null
     }
->>>>>>> refs/remotes/origin/main
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
