@@ -3,9 +3,8 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
-export default function Input({ setOutput, output, setText, text }) {
+export default function Input({ setOutput, output, setText, text, setFile }) {
     const textRef = useRef(null)
-    const [file, setFile] = useState(false);
     const [model, setModel] = useState(1)
     const [localText, setLocalText] = useState("")
 
