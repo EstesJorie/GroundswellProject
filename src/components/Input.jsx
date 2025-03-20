@@ -14,10 +14,20 @@ export default function Input({ setOutput, output, setText, text }) {
     }, [model])
 
     const models = {
-        'ChatGPT' : 1,
-        'DeepSeek' : 2,
-        'Gemini' : 3,
+        'Gemma': 1,
+        'Llama-Guard': 2,
+        'Llama3-70b': 3,
+        'Llama3-8b': 4,
+        'Mixtral': 5,
+        'DeepSeek-Qwen': 6,
+        'DeepSeek-Llama-Spec': 7,
+        'DeepSeek-Llama': 8,
     }
+
+    useEffect(() => {
+        // Set default model to Gemma (1)
+        setModel(models['DeepSeek-Qwen']);
+    }, []);
 
     const handleFormSubmit = async (e) => {
       e.preventDefault();
@@ -104,12 +114,19 @@ return (
           <div className='float-left'>
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
-
-          <select onChange={handleModelChange} className='border border-black rounded bg-white'>
-            <option value='ChatGPT'>ChatGPT</option>
-            <option value='DeepSeek'>DeepSeek</option>
-            <option value='Gemini'>Gemini</option>
-          </select>
+          <select 
+            onChange={handleModelChange} 
+            className='border border-black rounded bg-white font-semibold'
+            value={Object.keys(models).find(key => models[key] === model)} // Add this line
+        >
+            <option value='Gemma'>Gemini</option>
+            <option value='Llama-Guard'>Llama-Guard</option>
+            <option value='Llama3-70b'>Llama3-70b</option>
+            <option value='Mixtral'>Mixtral</option>
+            <option value='Deepseek-Qwen'>Deepseek-Qwen</option>
+            <option value='Deepseek-Llama-Spec'>Deepseek-Llama-Spec</option>
+            <option value='Deepseek-Llama'>Deepseek-Llama</option>
+        </select>
       
           <button type='submit' 
            className='button w-150 p-2 float-right mr-20' >
