@@ -83,10 +83,7 @@ export default function OutputArea({text, output, setText}) {
   }, [output]);
 
   return (
-    <div id='out' className='h-85 grow bg-white flex flex-row overflow-auto'>
-      <div className='grid items-center p-5 bg-[#BFC0C0]'>
-        <p>{':)'}</p>
-      </div>
+    <div id='out' className='h-0 grow bg-white flex flex-row overflow-auto'>
       <div className='flex flex-col grow p-4 '>
         {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} />)}
         
