@@ -47,13 +47,14 @@ const ImageCyclingLoader = ({
   );
 };
 
-export default function OutputArea({text, output, setText, file}) {
+export default function OutputArea({text, output, setText}) {
   const [messageHistory, setMessageHistory] = useState([
-    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**", file_label:null}
+    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
   console.log(typeof messageHistory)
 
   const [isLoading, setIsLoading] = useState(false);
+  const [previousOutput, setPreviousOutput] = useState("");
 
   const loadingImages = [
     "../images/Emote_NERD.png",
@@ -63,35 +64,46 @@ export default function OutputArea({text, output, setText, file}) {
   ];
 
   useEffect(() => {
-    if(file!=null) {
-      var file_label = file.name;
-    }
-    else {
-      var file_label = null
-    }
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "YOU", content: text, file_label:file_label}
+        {key: prevMessages.length, sender: "YOU", content: text}
       ]);
       setIsLoading(true);
     }
   }, [text])
   
   useEffect(() => {
-    if (output) {
-      setIsLoading(false);
+    if (output && output !== previousOutput) {
+      setPreviousOutput(output);
+
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "BOT", content: output, file_label:null}
+        {key: prevMessages.length, sender: "BOT", content: output}
       ]);
+
+      setIsLoading(false);
     }
-  }, [output]);
+  }, [output, previousOutput]);
+
+  useEffect(() => {
+    let timeoutId;
+    
+    if (isLoading) {
+      timeoutId = setTimeout(() => {
+        console.log("Loading timeout reached - resetting loading state");
+        setIsLoading(false);
+      }, 30000); 
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+    }, [isLoading]);
 
   return (
     <div id='out' className='h-0 grow bg-white flex flex-row overflow-auto'>
       <div className='flex flex-col grow p-4 '>
-        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} file_label={msg.file_label} />)}
+        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} />)}
         
         {}
         {isLoading && (
