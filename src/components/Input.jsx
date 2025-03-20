@@ -13,18 +13,18 @@ export default function Input({ setOutput, output, setText, text, setFile, file 
 
     const models = {
         'Gemma': 1,
-        'Llama-Guard': 2,
-        'Llama3-70b': 3,
-        'Llama3-8b': 4,
-        'Mixtral': 5,
-        'DeepSeek-Qwen': 6,
-        'DeepSeek-Llama-Spec': 7,
-        'DeepSeek-Llama': 8,
+        'Llama-Guard': 4,
+        'Llama3-70b': 2,
+        'Llama3-8b': 6,
+        'Mixtral': 7,
+        'DeepSeek-Qwen': 8,
+        'DeepSeek-Llama-Spec': 9,
+        'DeepSeek-Llama': 10,
     }
-
+    
     useEffect(() => {
         // Set default model to Gemma (1)
-        setModel(models['DeepSeek-Qwen']);
+        setModel(models['Gemma']);
     }, []);
 
     const handleFormSubmit = async (e) => {
