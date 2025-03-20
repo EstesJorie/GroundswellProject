@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 import os
 import sys
+from pypdf import PdfReader as pdfr
 
 load_dotenv()
 
@@ -38,7 +39,12 @@ async def upload_file(
 ):
     try:
         contents = await file.read()
-        content_str = contents.decode('utf-8')
+        print(file.content_type)
+        
+        if type(file.content_type) == 'application/pdf':
+            reader = pdfr(file)
+            content_str = reader.extract_text()
+        else: content_str = contents.decode('utf-16')
         
         # Combine text and description for the prompt
         prompt = f"{text}. Description: {description if description else text}" 
