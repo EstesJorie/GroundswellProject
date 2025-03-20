@@ -2,9 +2,17 @@ import React from 'react'
 import Markdown from 'react-markdown'
 
 export function parseMarkdown(markdown) {
-    return (
-        <Markdown>{markdown}</Markdown>
-    )
+    // Split text by double newlines (standard paragraph breaks)
+    const paragraphs = markdown.split(/\n\n+/);
+    
+    // Create an array of paragraph elements
+    const paragraphElements = paragraphs.map((paragraph, index) => (
+        <div key={index} className="mb-4">
+            <Markdown>{paragraph}</Markdown>
+        </div>
+    ));
+    
+    return <>{paragraphElements}</>;
 }
 
 export default function ChatMessage({sender, content}) {
