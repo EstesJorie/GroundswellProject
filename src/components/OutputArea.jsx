@@ -47,7 +47,7 @@ const ImageCyclingLoader = ({
   );
 };
 
-export default function OutputArea({text, output, setText}) {
+export default function OutputArea({text, output, setText, file}) {
   const [messageHistory, setMessageHistory] = useState([
     {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**", file_label:null}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
@@ -73,7 +73,7 @@ export default function OutputArea({text, output, setText}) {
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "YOU", content: text}
+        {key: prevMessages.length, sender: "YOU", content: text, file_label:file_label}
       ]);
       setIsLoading(true);
     }
@@ -126,3 +126,4 @@ export default function OutputArea({text, output, setText}) {
   );
 }
 //overflow-y-scroll
+//
