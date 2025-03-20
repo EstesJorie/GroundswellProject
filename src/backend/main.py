@@ -41,7 +41,8 @@ async def upload_file(
         content_str = contents.decode('utf-8')
         
         # Combine text and description for the prompt
-        prompt = f"{text}. Description: {description}" if description else text
+        prompt = f"{text}. Description: {description if description else text}" 
+        print(type(prompt))
         
         # Call chat_with_groq with model parameter
         response = chat_with_groq(

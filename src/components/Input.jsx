@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
-export default function Input({ setOutput, output, setText, text, setFile }) {
+export default function Input({ setOutput, output, setText, text, setFile, file }) {
     const [model, setModel] = useState(1)
     const [localText, setLocalText] = useState("")
 
@@ -34,7 +34,7 @@ export default function Input({ setOutput, output, setText, text, setFile }) {
       setText(localText);
       
       
-      if (file || text !== '') {
+      if (file) {
           console.log('Uploading file...');
     
           const formData = new FormData();
