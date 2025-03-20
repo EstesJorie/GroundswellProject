@@ -109,7 +109,7 @@ export default function OutputArea({text, output, setText, file}) {
   return (
     <div id='out' className='h-0 grow bg-white flex flex-row overflow-auto'>
       <div className='flex flex-col grow p-4 '>
-        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} file_label={null} />)}
+        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} file_label={msg.file_label} />)}
         
         {}
         {isLoading && (
