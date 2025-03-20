@@ -14,22 +14,20 @@ export default function Input({ setOutput, output, setText, text }) {
     }, [model])
 
     const models = {
-        'Gemma 2' : 1,
-        'Deepseek R1' : 2,
-        'Llama 3.1' : 3,
-        'Mixtral' : 4
-
-        // 1: "gemma2-9b-it",
-        // 2: "deepseek-r1-distill-qwen-32b",
-        // 3: "llama-3.1-8b-instant",
-        // 4: "mixtral-8x7b-32768",
-        // 5: "llama3-70b-8192",
-        // 6: "llama3-8b-8192",
-        // 7: "llama-guard-3-8b",
-        // 8: "llama-3.3-70b-versatile",
-        // 9: "deepseek-r1-distill-llama-70b-specdec",
-        // 10: "deepseek-r1-distill-llama-70b",
+        'Gemma': 1,
+        'Llama-Guard': 2,
+        'Llama3-70b': 3,
+        'Llama3-8b': 4,
+        'Mixtral': 5,
+        'DeepSeek-Qwen': 6,
+        'DeepSeek-Llama-Spec': 7,
+        'DeepSeek-Llama': 8,
     }
+
+    useEffect(() => {
+        // Set default model to Gemma (1)
+        setModel(models['DeepSeek-Qwen']);
+    }, []);
 
     const handleFormSubmit = async (e) => {
       e.preventDefault();
@@ -116,13 +114,19 @@ return (
           <div className='float-left'>
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
-
-          <select onChange={handleModelChange} className='border border-black rounded bg-white'>
-            <option value='Gemma 2'>Gemma 2</option>
-            <option value='Deepseek R1'>Deepseek R1</option>
-            <option value='Llama 3.1'>Llama 3.1</option>
+          <select 
+            onChange={handleModelChange} 
+            className='border border-black rounded bg-white font-semibold'
+            value={Object.keys(models).find(key => models[key] === model)} // Add this line
+        >
+            <option value='Gemma'>Gemini</option>
+            <option value='Llama-Guard'>Llama-Guard</option>
+            <option value='Llama3-70b'>Llama3-70b</option>
             <option value='Mixtral'>Mixtral</option>
-          </select>
+            <option value='Deepseek-Qwen'>Deepseek-Qwen</option>
+            <option value='Deepseek-Llama-Spec'>Deepseek-Llama-Spec</option>
+            <option value='Deepseek-Llama'>Deepseek-Llama</option>
+        </select>
       
           <button type='submit' 
            className='button w-150 p-2 float-right mr-20' >
