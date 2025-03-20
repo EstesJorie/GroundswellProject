@@ -21,7 +21,7 @@ export default function Input({ setOutput, output, setText, text, setFile, file 
         'DeepSeek-Llama-Spec': 9,
         'DeepSeek-Llama': 10,
     }
-    
+
     useEffect(() => {
         // Set default model to Gemma (1)
         setModel(models['Gemma']);
@@ -34,11 +34,11 @@ export default function Input({ setOutput, output, setText, text, setFile, file 
       setText(localText);
       
       
-      if (file) {
+      if (file || localText !== '') {
           console.log('Uploading file...');
     
           const formData = new FormData();
-          formData.append('file', file);
+          if (file) {formData.append('file', file)};
           formData.append('text', localText); // Changed from text to localText
           formData.append('model', model);
 
@@ -70,10 +70,10 @@ export default function Input({ setOutput, output, setText, text, setFile, file 
               console.log(typeof output)
           } catch (error) {
               console.error('Error uploading file:', error);
-              alert('Error uploading file. Please try again.');
+            //   alert('Error uploading file. Please try again.');
           }
       } else {
-          console.log('Please attach a file');
+          console.log('Please attach a file or type some input');
       }
       setLocalText('')
   }

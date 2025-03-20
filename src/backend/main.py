@@ -39,9 +39,9 @@ async def upload_file(
 ):
     try:
         contents = await file.read()
-        print(file.content_type)
+        print(file.content_type, type(File(...)))
         
-        if type(file.content_type) == 'application/pdf':
+        if file.content_type == 'application/pdf':
             reader = pdfr(file)
             content_str = reader.extract_text()
         else: content_str = contents.decode('utf-8')
