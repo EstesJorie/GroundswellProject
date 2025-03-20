@@ -19,7 +19,7 @@ uvicorn src.backend.main:app --reload --port 8000
 - conda install conda-forge::fastapi
 - conda install conda-forge::uvicorn  
 - conda install conda-forge::python-multipart   
-
+- conda install conda-forge::pypdf
 
 ## PIP 
 - pip install groq
@@ -27,4 +27,5 @@ uvicorn src.backend.main:app --reload --port 8000
 - pip install fastapi
 - pip install uvicorn
 - pip install python-multipart
+- pip install pypdf
 
