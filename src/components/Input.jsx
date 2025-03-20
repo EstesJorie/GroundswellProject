@@ -123,9 +123,9 @@ return (
             <option value='Llama-Guard'>Llama-Guard</option>
             <option value='Llama3-70b'>Llama3-70b</option>
             <option value='Mixtral'>Mixtral</option>
-            <option value='Deepseek-Qwen'>Deepseek-Qwen</option>
-            <option value='Deepseek-Llama-Spec'>Deepseek-Llama-Spec</option>
-            <option value='Deepseek-Llama'>Deepseek-Llama</option>
+            <option value='DeepSeek-Qwen'>Deepseek-Qwen</option>
+            <option value='DeepSeek-Llama-Spec'>Deepseek-Llama-Spec</option>
+            <option value='DeepSeek-Llama'>Deepseek-Llama</option>
         </select>
       
           <button type='submit' 
