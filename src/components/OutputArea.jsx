@@ -49,7 +49,7 @@ const ImageCyclingLoader = ({
 
 export default function OutputArea({text, output, setText}) {
   const [messageHistory, setMessageHistory] = useState([
-    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**"}
+    {key:0, sender:"SYSTEM", content:"You are now talking to our **AI Chatbot**", file_label:null}
   ]) // {key:1, sender:"BOT", content:"Hello World"}
   console.log(typeof messageHistory)
 
@@ -64,6 +64,15 @@ export default function OutputArea({text, output, setText}) {
   ];
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    if(file!=null) {
+      var file_label = file.name;
+    }
+    else {
+      var file_label = null
+    }
+>>>>>>> refs/remotes/origin/main
     if (text !== '') {
       setMessageHistory(prevMessages => [
         ...prevMessages, 
@@ -79,7 +88,7 @@ export default function OutputArea({text, output, setText}) {
 
       setMessageHistory(prevMessages => [
         ...prevMessages, 
-        {key: prevMessages.length, sender: "BOT", content: output}
+        {key: prevMessages.length, sender: "BOT", content: output, file_label:null}
       ]);
 
       setIsLoading(false);
@@ -103,7 +112,7 @@ export default function OutputArea({text, output, setText}) {
   return (
     <div id='out' className='h-0 grow bg-white flex flex-row overflow-auto'>
       <div className='flex flex-col grow p-4 '>
-        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} />)}
+        {messageHistory.map((msg) => <ChatMessage sender={msg.sender} content={msg.content} file_label={msg.file_label} />)}
         
         {}
         {isLoading && (
