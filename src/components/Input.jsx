@@ -110,7 +110,7 @@ return (
     >
     </textarea>
         
-      <div className="flow-root">
+      <div className="flow-root pt-1">
           <div className='float-left'>
               <input id="file" type="file" onChange={handleFileChange} className='border border-black rounded bg-white' />
           </div>
@@ -129,7 +129,7 @@ return (
         </select>
       
           <button type='submit' 
-           className='button w-150 p-2 float-right mr-20' >
+           className='button w-60 p-2 float-right mr-10 bg-green-500 text-2xl font-semibold' >
             Submit
           </button>
       </div>
