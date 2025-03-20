@@ -23,7 +23,7 @@ export function FileIcon(file_label) {
     }
     else {
         return (
-            <p> <a className='border-1 rounded-full p-1 bg-[#E4ECF1]'>📄{file_label}</a></p>
+            <p><a className='border-1 rounded-full py-1 px-2 bg-[#E4ECF1]'>📄 {file_label}</a></p>
         )
     }
 }
