@@ -13,7 +13,7 @@ uvicorn src.backend.main:app --reload --port 8000
 
 # Dependency Install
 
-## Conda
+**CONDA** 
 - conda install conda-forge::groq
 - conda install conda-forge::python-dotenv
 - conda install conda-forge::fastapi
@@ -21,7 +21,7 @@ uvicorn src.backend.main:app --reload --port 8000
 - conda install conda-forge::python-multipart   
 - conda install conda-forge::pypdf
 
-## PIP 
+**PIP**  
 - pip install groq
 - pip install python-dotenv
 - pip install fastapi
